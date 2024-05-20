@@ -20,7 +20,7 @@ const boxesContainer =
 createBtn.addEventListener('click', () => {
   const amount = parseInt(input.value);
 
-  if (amount >= 1 && <= 100) {
+  if (amount >= 1 && amount <= 100) {
 
     crateBoxes(amount);
     input.value = '';

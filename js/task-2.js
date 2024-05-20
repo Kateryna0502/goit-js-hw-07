@@ -33,3 +33,6 @@ const galleryItems = images.map(({ url, alt }) => {
 }).join('');
 
 gallery.insertAdjacentHTML('beforeend'), galleryItems;
+
+
+

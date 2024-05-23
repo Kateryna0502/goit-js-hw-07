@@ -22,15 +22,17 @@ btnCreateElem.addEventListener('click', () => {
   }
 });
 function createBoxes(amount) {
+  const fragment = document.createDocumentFragment();
   divBoxElem.innerHTML = '';
   for (let i = 0; i < amount; i++) {
     const divElem = document.createElement('div');
     divElem.style.width = `${30 + i * 10}px`;
     divElem.style.height = `${30 + i * 10}px`;
     divElem.style.backgroundColor = getRandomHexColor();
-    divBoxElem.appendChild(divElem);
+    fragment.appendChild(divElem);
   }
-}
+  divElem.appendChild(fragment);
+  }
 
 function destroyBoxes() {
   divBoxElem.innerHTML = '';

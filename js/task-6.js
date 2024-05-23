@@ -4,54 +4,36 @@ function getRandomHexColor() {
     .padStart(6, 0)}`;
 }
 
-const controls =
-  document.getElementById('controls');
-const input =
-  controls.querySelector('input');
-const createBtn =
-  controls.querySelector('button[data-create]');
+const divFirstElem = document.querySelector('#controls');
+const divBoxElem = document.querySelector('#boxes');
+const inputElem = document.querySelector('input');
+const btnCreateElem = controls.querySelector('[data-create]');
+console.log(btnCreateElem);
+const btnDestroyElem = controls.querySelector('[data-destroy]');
+btnDestroyElem.classList.add('destroy');
+inputElem.classList.add('input-amount');
+divBoxElem.classList.add('divBoxElem');
 
-const destroyBtn =
-  controls.querySelector('button[data-destroy]');
-
-const boxesContainer =
-  document.getElementById('boxes');
-
-createBtn.addEventListener('click', () => {
-  const amount = parseInt(input.value);
-
-  if (amount >= 1 && amount <= 100) {
-
-    crateBoxes(amount);
-    input.value = '';
-  } else {
-    alert('Please enter a number between 1 amd 100.');
+btnCreateElem.addEventListener('click', () => {
+  const amount = Number(inputElem.value);
+  if (amount > 1 && amount < 100) {
+    createBoxes(amount);
+    inputElem.value = '';
   }
 });
-
-destroyBtn.addEventListener('click', destroyBoxes);
-
 function createBoxes(amount) {
-  destroyBoxes();
-
-  const fragment =
-    document.createDocumentFragment();
-  let size = 30;
-
+  divBoxElem.innerHTML = '';
   for (let i = 0; i < amount; i++) {
-
-    const div =
-      document.createElement('div');
-    div.style.width = `${size}px`;
-    div.style.height = `${size}px`;
-    div.style.backgroundColor =
-      getRandomHexColor();
-    div.style.margin = '5px';
-    fragment.appendChild(div);
-    size += 10;
+    const divElem = document.createElement('div');
+    divElem.style.width = `${30 + i * 10}px`;
+    divElem.style.height = `${30 + i * 10}px`;
+    divElem.style.backgroundColor = getRandomHexColor();
+    divBoxElem.appendChild(divElem);
   }
-  boxesContainer.appendChild(fragment);
 }
+
 function destroyBoxes() {
-  boxesContainer.innerHTML = '';
+  divBoxElem.innerHTML = '';
 }
+btnDestroyElem.addEventListener('click', destroyBoxes);
+

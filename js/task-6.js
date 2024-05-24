@@ -29,9 +29,9 @@ function createBoxes(amount) {
     divElem.style.width = `${30 + i * 10}px`;
     divElem.style.height = `${30 + i * 10}px`;
     divElem.style.backgroundColor = getRandomHexColor();
-    fragment.appendChild(divElem);
+    fragment.appendChild(divBoxElem);
   }
-  divElem.appendChild(fragment);
+  divBoxElem.appendChild(fragment);
   }
 
 function destroyBoxes() {
